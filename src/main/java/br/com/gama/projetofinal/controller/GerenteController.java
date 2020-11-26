@@ -51,5 +51,16 @@ public class GerenteController {
 		return ResponseEntity.ok(lista);
 		
 	}
+	
+	@PostMapping("/novogerente")
+	public ResponseEntity<Gerente> gravar(@RequestBody Gerente objeto){
+		try {
+			dao.save(objeto);
+			return ResponseEntity.ok(objeto);
+		} catch(Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.status(403).build();
+		}
+	}
 
 }
